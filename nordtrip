@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NordTrip - Private Taxi & Transfers in Morocco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --light-blue: #e3f2fd;
+            --accent-blue: #00838f;
+            --whatsapp-green: #25d366;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--gray-light);
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-switch {
+            background: var(--light-blue);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lang-switch:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 131, 143, 0.8)), url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 100px 20px 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            max-width: 600px;
+        }
+
+        /* Booking Form Box */
+        .booking-container {
+            background: var(--white);
+            width: 100%;
+            max-width: 900px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: var(--gray-dark);
+            text-align: left;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-blue);
+        }
+
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group select:focus, .form-group input:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+        }
+
+        .price-summary {
+            background: var(--light-blue);
+            padding: 15px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp-green);
+            color: var(--white);
+            border: none;
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ebc57;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            background: var(--white);
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 25px;
+            border-radius: 8px;
+            background: var(--gray-light);
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .feature-box i {
+            font-size: 35px;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+        }
+
+        .feature-box h3 {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .feature-box p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: var(--white);
+            padding: 40px 10% 20px 10%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            background: #222;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-blue);
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 26px; }
+            .booking-container { padding: 20px; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"><i class="fa-solid fa-taxi"></i> Nord<span>Trip</span></a>
+        <div class="header-right">
+            <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">EN / FR</button>
+        </div>
+    </header>
+
+    <!-- Hero & Booking Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="heroTitle">Private Taxi & Transfers from Tangier</h1>
+            <p id="heroSubtitle">Book your comfortable ride across Morocco easily and securely via WhatsApp.</p>
+        </div>
+
+        <div class="booking-container">
+            <form id="bookingForm" onsubmit="sendToWhatsApp(event)">
+                <div class="form-grid">
+                    <!-- Départ -->
+                    <div class="form-group">
+                        <label id="lblFrom">From (Départ)</label>
+                        <select id="fromCity" disabled>
+                            <option value="Tangier">Tangier (Tanger)</option>
+                        </select>
+                    </div>
+
+                    <!-- Arrivée (Toutes les villes du Maroc) -->
+                    <div class="form-group">
+                        <label id="lblTo">To (Destination)</label>
+                        <select id="toCity" onchange="calculatePrice()">
+                            <option value="Casablanca">Casablanca (120 €)</option>
+                            <option value="Rabat">Rabat (90 €)</option>
+                            <option value="Marrakech">Marrakech (200 €)</option>
+                            <option value="Chefchaouen">Chefchaouen (70 €)</option>
+                            <option value="Tetouan">Tetouan (50 €)</option>
+                            <option value="Fes">Fes (130 €)</option>
+                            <option value="Agadir">Agadir (280 €)</option>
+                            <option value="Meknes">Meknes (110 €)</option>
+                            <option value="Essaouira">Essaouira (240 €)</option>
+                            <option value="Oujda">Oujda (260 €)</option>
+                            <option value="Nador">Nador (230 €)</option>
+                            <option value="Al Hoceima">Al Hoceima (180 €)</option>
+                            <option value="Asilah">Asilah (40 €)</option>
+                            <option value="Larache">Larache (60 €)</option>
+                            <option value="Kenitra">Kenitra (80 €)</option>
+                        </select>
+                    </div>
+
+                    <!-- Véhicule (1-6, 1-9, 1-19) -->
+                    <div class="form-group">
+                        <label id="lblVehicle">Vehicle Type (Passagers)</label>
+                        <select id="vehicleType" onchange="calculatePrice()">
+                            <option value="Car / Van (1-6 Persons)">Car / Van (1-6 Persons)</option>
+                            <option value="Minibus (1-9 Persons)">Minibus (1-9 Persons)</option>
+                            <option value="Big Bus / Van (1-19 Persons)">Big Bus / Van (1-19 Persons)</option>
+                        </select>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="form-group">
+                        <label id="lblDate">Date</label>
+                        <input type="date" id="tripDate" required>
+                    </div>
+
+                    <!-- Heure -->
+                    <div class="form-group">
+                        <label id="lblTime">Time (Heure)</label>
+                        <input type="time" id="tripTime" required>
+                    </div>
+                </div>
+
+                <!-- Price Display -->
+                <div class="price-summary">
+                    <span id="estimatedText">Estimated Price:</span>
+                    <span id="totalPrice">120 €</span>
+                </div>
+
+                <button type="submit" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> 
+                    <span id="btnSubmit">Book via WhatsApp / Réserver</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="feature-box">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3 id="f1Title">Safe & Secure</h3>
+            <p id="f1Desc">Professional licensed drivers with years of experience across Morocco.</p>
+        </div>
+        <div class="feature-box">
+            <i class="fa-solid fa-clock"></i>
+            <h3 id="f2Title">24/7 Availability</h3>
+            <p id="f2Desc">Ready to pick you up anytime from Tangier airport, port, or hotel.</p>
+        </div>
+        <div class="feature-box">
+            <i class="fa-solid fa-tags"></i>
+            <h3 id="f3Title">Best Prices</h3>
+            <p id="f3Desc">Transparent pricing with no hidden fees for all destinations.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>NordTrip - Noureddine Afettat</h3>
+                <p style="color: #aaa; font-size: 14px; margin-top: 5px;">Private Taxi & Transfers in Tangier, Morocco</p>
+            </div>
+            <div class="social-links">
+                <a href="https://facebook.com/noureddine.afettat" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://instagram.com/noureddine.afettat" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/212608174136" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2026 NordTrip. All rights reserved. Managed by Noureddine Afettat.</p>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Tarifs de base par destination (pour 1-6 personnes)
+        const basePrices = {
+            "Casablanca": 120,
+            "Rabat": 90,
+            "Marrakech": 200,
+            "Chefchaouen": 70,
+            "Tetouan": 50,
+            "Fes": 130,
+            "Agadir": 280,
+            "Meknes": 110,
+            "Essaouira": 240,
+            "Oujda": 260,
+            "Nador": 230,
+            "Al Hoceima": 180,
+            "Asilah": 40,
+            "Larache": 60,
+            "Kenitra": 80
+        };
+
+        // Multiplicateurs selon le véhicule
+        const vehicleMultipliers = {
+            "Car / Van (1-6 Persons)": 1.0,
+            "Minibus (1-9 Persons)": 1.4,
+            "Big Bus / Van (1-19 Persons)": 1.8
+        };
+
+        function calculatePrice() {
+            const city = document.getElementById("toCity").value;
+            const vehicle = document.getElementById("vehicleType").value;
+            
+            let base = basePrices[city] || 100;
+            let multiplier = vehicleMultipliers[vehicle] || 1.0;
+            
+            let finalPrice = Math.round(base * multiplier);
+            document.getElementById("totalPrice").innerText = finalPrice + " €";
+        }
+
+        // Gestion de la langue (FR / EN)
+        let currentLang = 'en';
+
+        const translations = {
+            en: {
+                heroTitle: "Private Taxi & Transfers from Tangier",
+                heroSubtitle: "Book your comfortable ride across Morocco easily and securely via WhatsApp.",
+                lblFrom: "From (Départ)",
+                lblTo: "To (Destination)",
+                lblVehicle: "Vehicle Type (Passagers)",
+                lblDate: "Date",
+                lblTime: "Time",
+                estimatedText: "Estimated Price:",
+                btnSubmit: "Book via WhatsApp",
+                f1Title: "Safe & Secure",
+                f1Desc: "Professional licensed drivers with years of experience across Morocco.",
+                f2Title: "24/7 Availability",
+                f2Desc: "Ready to pick you up anytime from Tangier airport, port, or hotel.",
+                f3Title: "Best Prices",
+                f3Desc: "Transparent pricing with no hidden fees for all destinations."
+            },
+            fr: {
+                heroTitle: "Taxi Privé & Transferts depuis Tanger",
+                heroSubtitle: "Réservez votre trajet confortable à travers le Maroc facilement via WhatsApp.",
+                lblFrom: "De (Départ)",
+                lblTo: "Vers (Destination)",
+                lblVehicle: "
